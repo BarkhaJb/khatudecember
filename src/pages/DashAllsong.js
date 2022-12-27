@@ -142,7 +142,8 @@ const DashAllsong = () => {
     //setaddformImg(event.target.files[0]);
     console.log(addformimg);
   };
-  const editsubmit = async (addformvalue) => {
+  const editsubmit = async (addformvalue,event) => {
+    event.preventDefault();
     //debugger;
     const formDataChange = new FormData();
 
@@ -158,7 +159,7 @@ const DashAllsong = () => {
     );
 
     getAllSongs();
-
+    editToggle();
     console.log('resresres', res);
   };
 
@@ -181,6 +182,7 @@ const DashAllsong = () => {
   };
 
   const AddAlbumName = async (event) => {
+    event.preventDefault();
     try {
       const formData = new FormData();
 
@@ -197,6 +199,7 @@ const DashAllsong = () => {
     }
 
     getAllSongsData();
+    editAddToggle();
   };
 
   const [search, setSearch] = useState();
@@ -425,7 +428,7 @@ const DashAllsong = () => {
                       />
                     </div>
                   </div>
-                  <button className='submitbtn' onClick={() => editsubmit(addformvalue)}>
+                  <button className='submitbtn' onClick={(e) => editsubmit(addformvalue,e)}>
                     submit
                   </button>
                 </form>
@@ -562,7 +565,7 @@ const DashAllsong = () => {
                       />
                     </div>
                   </div>
-                  <button className='submitbtn' onClick={() => AddAlbumName()}>
+                  <button className='submitbtn' onClick={(e) => AddAlbumName(e)}>
                     submit
                   </button>
                 </form>

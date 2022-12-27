@@ -76,6 +76,8 @@ const DashAlbumsongs = () => {
       .then((json) => setAllSongs(json))
       .catch((error) => console.log(error));
   };
+
+  
   const editToggle = () => {
     setIsOpen(!isOpen);
   };
@@ -127,7 +129,7 @@ const DashAlbumsongs = () => {
             {/* <button className='addalbum'>add song</button> */}
           </div>
           <div className='addbackarea'>
-            <button className='addback'>
+            <button className='backlinkalbum'>
               <Link to='/albums' className='backlink'>
                 <i class='fa fa-angle-left' aria-hidden='true'></i>Back
               </Link>

@@ -115,13 +115,15 @@ const DashRecommends = () => {
   };
 
   const getAllSongsData = () => {
+    
     const url = 'http://localhost:3100/recommended';
     fetch(url)
       .then((response) => response.json())
       .then((json) => setDashRecomSong(json))
       .catch((error) => console.log(error));
   };
-  const AddAlbumName = async () => {
+  const AddAlbumName = async (e) => {
+    e.preventDefault();
     try {
       const formData = new FormData();
 
@@ -141,6 +143,7 @@ const DashRecommends = () => {
     }
 
     getAllSongsData();
+    editAddToggle();
   };
 
   const editsubmit = async (event) => {
@@ -447,7 +450,7 @@ const DashRecommends = () => {
                   </div>
                   <button
                     className='submitbtn'
-                    onClick={() => AddAlbumName(addformvalue)}
+                    onClick={(e) => AddAlbumName(e)}
                   >
                     submit
                   </button>
