@@ -142,12 +142,13 @@ const DashAllsong = () => {
     //setaddformImg(event.target.files[0]);
     console.log(addformimg);
   };
-  const editsubmit = async (addformvalue) => {
+  const editsubmit = async (event) => {
+    event.preventDefault()
     //debugger;
     const formDataChange = new FormData();
 
     formDataChange.append('files', addformimg.files[0]);
-    formDataChange.append('files', addformimg.audio[0]);
+    formDataChange.append('audio', addformimg.audio[0]);
 
     formDataChange.append('data', JSON.stringify(addformvalue));
     console.log(formDataChange);
@@ -156,7 +157,7 @@ const DashAllsong = () => {
       `http://localhost:3100/songs/${addformvalue.id}`,
       formDataChange
     );
-
+    editToggle()
     getAllSongs();
 
     console.log('resresres', res);
@@ -181,6 +182,8 @@ const DashAllsong = () => {
   };
 
   const AddAlbumName = async (event) => {
+    event.preventDefault()
+    
     try {
       const formData = new FormData();
 
@@ -195,7 +198,7 @@ const DashAllsong = () => {
     } catch (error) {
       console.error(error);
     }
-
+    editAddToggle();
     getAllSongsData();
   };
 
@@ -425,7 +428,7 @@ const DashAllsong = () => {
                       />
                     </div>
                   </div>
-                  <button className='submitbtn' onClick={() => editsubmit(addformvalue)}>
+                  <button className='submitbtn' onClick={(e) => editsubmit(e)}>
                     submit
                   </button>
                 </form>
@@ -562,7 +565,7 @@ const DashAllsong = () => {
                       />
                     </div>
                   </div>
-                  <button className='submitbtn' onClick={() => AddAlbumName()}>
+                  <button className='submitbtn' onClick={(e) => AddAlbumName(e)}>
                     submit
                   </button>
                 </form>

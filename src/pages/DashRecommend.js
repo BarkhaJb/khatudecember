@@ -121,7 +121,8 @@ const DashRecommends = () => {
       .then((json) => setDashRecomSong(json))
       .catch((error) => console.log(error));
   };
-  const AddAlbumName = async () => {
+  const AddAlbumName = async (e) => {
+    e.preventDefault()
     try {
       const formData = new FormData();
 
@@ -139,16 +140,17 @@ const DashRecommends = () => {
     } catch (error) {
       console.error(error);
     }
-
+    editAddToggle();
     getAllSongsData();
   };
 
   const editsubmit = async (event) => {
+    //debugger
     event.preventDefault();
     const formDataChange = new FormData();
 
     formDataChange.append('files', addformimg.files[0]);
-    formDataChange.append('files', addformimg.audio[0]);
+    formDataChange.append('audio', addformimg.audio[0]);
 
     formDataChange.append('data', JSON.stringify(addformvalue));
 
@@ -200,7 +202,7 @@ const DashRecommends = () => {
                 <p className='albumname albumhead'>Artist</p>
               </div>
               <div className='albumnamearea '>
-                <p className='albumname  albumhead'>Artist image</p>
+                <p className='albumname  albumhead'>Thambnail</p>
               </div>
               <div className='albumnamearea '>
                 <p className='albumname  albumhead'>Song</p>
@@ -225,7 +227,9 @@ const DashRecommends = () => {
                 </div>
 
                 <div className='albumnamearea'>
-                  <p className='albumname'>{song?.song}</p>
+                  <p className='albumname'>
+                    {song?.song}
+                  </p>
                 </div>
 
                 <div className='spanarea'>
@@ -447,7 +451,7 @@ const DashRecommends = () => {
                   </div>
                   <button
                     className='submitbtn'
-                    onClick={() => AddAlbumName(addformvalue)}
+                    onClick={(e) => AddAlbumName(e)}
                   >
                     submit
                   </button>

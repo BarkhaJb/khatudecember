@@ -153,7 +153,7 @@ const DashTrend = () => {
     const formDataChange = new FormData();
 
     formDataChange.append('files', addformimg.files[0]);
-    formDataChange.append('files', addformimg.audio[0]);
+    formDataChange.append('audio', addformimg.audio[0]);
 
     formDataChange.append('data', JSON.stringify(addformvalue));
     console.log(formDataChange);

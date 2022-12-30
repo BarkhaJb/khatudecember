@@ -115,12 +115,12 @@ const DashNewRelease = () => {
 
   const editsubmit = async (event) => {
     event.preventDefault();
-    console.log('this is formvale', addformvalue);
+    console.log('this is formvalue', addformvalue);
     console.log('forming', addformimg);
     const formDataChange = new FormData();
 
     formDataChange.append('files', addformimg.files[0]);
-    formDataChange.append('files', addformimg.audio[0]);
+    formDataChange.append('audio', addformimg.audio[0]);
 
     formDataChange.append('data', JSON.stringify(addformvalue));
     console.log(formDataChange);
