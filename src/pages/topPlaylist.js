@@ -24,7 +24,7 @@ const TopPlaylist = ({
     if (currentArtist === null || undefined) {
       navigate('/');
     }
-    const url = `https://khatuwaleshyam.com:3100/playlist/songs/${currentArtist?._id}`;
+    const url = (`${process.env.REACT_APP_BASE_URL}/playlist/songs/${currentArtist?._id}`);
     fetch(url)
       .then((response) => response.json())
       .then((json) => {

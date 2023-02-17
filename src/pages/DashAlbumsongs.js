@@ -49,7 +49,7 @@ const DashAlbumsongs = () => {
     console.log('this is formvalue', formvalue._id);
 
     const res = await axios.put(
-      `http://localhost:3100/songs/${formvalue._id}`,
+      (`${process.env.REACT_APP_BASE_URL}/songs/${formvalue._id}`),
       {
         track: formvalue.track,
         image: formvalue.image,
@@ -70,12 +70,14 @@ const DashAlbumsongs = () => {
   };
 
   const getAllSongs = async () => {
-    const url = `http://localhost:3100/category/songs/${data}`;
+    const url = (`${process.env.REACT_APP_BASE_URL}/category/songs/${data}`);
     fetch(url)
       .then((response) => response.json())
       .then((json) => setAllSongs(json))
       .catch((error) => console.log(error));
   };
+
+  
   const editToggle = () => {
     setIsOpen(!isOpen);
   };
@@ -102,7 +104,7 @@ const DashAlbumsongs = () => {
           label: 'Delete',
           onClick: () =>
             axios
-              .delete(`http://localhost:3100/songs/${data}`)
+              .delete(`${process.env.REACT_APP_BASE_URL}/songs/${data}`)
 
               .then(() => {
                 const del = allsongs.filter((item) => song !== item._id);
@@ -127,7 +129,7 @@ const DashAlbumsongs = () => {
             {/* <button className='addalbum'>add song</button> */}
           </div>
           <div className='addbackarea'>
-            <button className='addback'>
+            <button className='backlinkalbum'>
               <Link to='/albums' className='backlink'>
                 <i class='fa fa-angle-left' aria-hidden='true'></i>Back
               </Link>

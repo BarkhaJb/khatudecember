@@ -28,7 +28,7 @@ const DashTopArtist = () => {
         {
           label: 'Delete',
           onClick: () =>
-            axios.delete(`http://localhost:3100/artist/${data}`).then(() => {
+            axios.delete(`${process.env.REACT_APP_BASE_URL}/artist/${data}`).then(() => {
               const del = dashartist.filter((item) => artist !== item._id);
               setDashArtist(del);
               getAllSongs();
@@ -62,7 +62,7 @@ const DashTopArtist = () => {
   };
 
   const getAllSongs = () => {
-    const url = 'http://localhost:3100/artist';
+    const url = (`${process.env.REACT_APP_BASE_URL}/artist`);
     fetch(url)
       .then((response) => response.json())
       .then((json) => setDashArtist(json))
@@ -70,7 +70,7 @@ const DashTopArtist = () => {
   };
 
   const getAllSongsData = () => {
-    const url = 'http://localhost:3100/artist';
+    const url = (`${process.env.REACT_APP_BASE_URL}/artist`);
     fetch(url)
       .then((response) => response.json())
       .then((json) => setDashArtist(json))
@@ -103,7 +103,7 @@ const DashTopArtist = () => {
     formDataChange.append('data', JSON.stringify(formvalue));
 
     const res = await axios.put(
-      ` http://localhost:3100/artist/${formvalue._id}`,
+      (`${process.env.REACT_APP_BASE_URL}/artist/${formvalue._id}`),
       formDataChange
     );
 
@@ -136,7 +136,7 @@ const DashTopArtist = () => {
 
       formData.append('data', JSON.stringify(addformvalue));
 
-      const result = await axios.post('http://localhost:3100/artist', formData);
+      const result = await axios.post(`${process.env.REACT_APP_BASE_URL}/artist`, formData);
       console.log('REsult: ', result);
     } catch (error) {
       console.error(error);

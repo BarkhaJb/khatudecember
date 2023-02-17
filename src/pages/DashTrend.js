@@ -31,7 +31,7 @@ const DashTrend = () => {
         {
           label: 'Delete',
           onClick: () =>
-            axios.delete(`http://localhost:3100/trending/${data}`).then(() => {
+            axios.delete(`${process.env.REACT_APP_BASE_URL}/trending/${data}`).then(() => {
               const del = dashtrendsong.filter((item) => song !== item._id);
               setDashTrendSong(del);
               getAllSongs();
@@ -64,7 +64,7 @@ const DashTrend = () => {
   };
 
   const getAllSongs = () => {
-    const url = 'http://localhost:3100/trending';
+    const url = (`${process.env.REACT_APP_BASE_URL}/trending`);
     fetch(url)
       .then((response) => response.json())
       .then((json) => setDashTrendSong(json))
@@ -72,7 +72,7 @@ const DashTrend = () => {
   };
 
   const selectartist = () => {
-    const url = `http://localhost:3100/artist`;
+    const url = (`${process.env.REACT_APP_BASE_URL}/artist`);
     fetch(url)
       .then((response) => response.json())
       .then((json) => setSuggestArtist(json))
@@ -112,7 +112,7 @@ const DashTrend = () => {
       console.log(formData);
 
       const result = await axios.post(
-        'http://localhost:3100/trending',
+        (`${process.env.REACT_APP_BASE_URL}/trending`),
         formData
       );
       console.log('REsult: ', result);
@@ -159,9 +159,9 @@ const DashTrend = () => {
     console.log(formDataChange);
 
     const res = await axios.put(
-      `http://localhost:3100/trending/${addformvalue.id}`,
+      (`${process.env.REACT_APP_BASE_URL}/trending/${addformvalue.id}`,
       formDataChange
-    );
+    ));
 
     getAllSongs();
     editToggle();

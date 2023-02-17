@@ -16,7 +16,7 @@ const SearchContent = ({ setMusicTracks, setTrackIndex }) => {
   useEffect(() => {
     if (location && location.state) {
       const searchValue = location.state;
-      const url = `https://khatuwaleshyam.com:3100/search/${searchValue}`;
+      const url = `${process.env.REACT_APP_BASE_URL}/search/${searchValue}`;
       fetch(url)
         .then((response) => response.json())
         .then((json) => {

@@ -24,7 +24,7 @@ const DashUpcomingEvent = () => {
           label: 'Delete',
           onClick: () =>
             axios
-              .delete(`http://localhost:3100/event/${event._id}`)
+              .delete(`${process.env.REACT_APP_BASE_URL}/event/${event._id}`)
 
               .then(() => {
                 const del = events.filter((item) => event !== item._id);
@@ -43,7 +43,7 @@ const DashUpcomingEvent = () => {
 
   const submitevent = async () => {
     const result = await axios
-      .post('http://localhost:3100/event', {
+      .post(`${process.env.REACT_APP_BASE_URL}/event`, {
         place: formvalue.place,
         address: formvalue.address,
         date: formvalue.date,
@@ -59,7 +59,7 @@ const DashUpcomingEvent = () => {
   };
 
   const getAllSongsData = () => {
-    const url = 'http://localhost:3100/event';
+    const url = (`${process.env.REACT_APP_BASE_URL}/event`);
     fetch(url)
       .then((response) => response.json())
       .then((json) => setEvents(json))
@@ -94,7 +94,7 @@ const DashUpcomingEvent = () => {
   const editevent = async (formvalue) => {
     const res = await axios({
       method: 'put',
-      url: `http://localhost:3100/event/${formvalue._id}`,
+      url: (`${process.env.REACT_APP_BASE_URL}/event/${formvalue._id}`),
       data: {
         place: formvalue.place,
         address: formvalue.address,

@@ -31,7 +31,7 @@ const Category = ({
     if (currentArtist === null) {
       navigate('/');
     }
-    const url = `https://khatuwaleshyam.com:3100/category/songs/${currentArtist?._id}`;
+    const url = `${process.env.REACT_APP_BASE_URL}/category/songs/${currentArtist?._id}`;
     fetch(url)
       .then((response) => response.json())
       .then((json) => {

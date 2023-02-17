@@ -7,7 +7,7 @@ const DashTopArtistSong = () => {
   const topSong = location.state;
 
   useEffect(() => {
-    const url = `http://localhost:3100/artist/songs/${topSong}`;
+    const url = (`${process.env.REACT_APP_BASE_URL}/artist/songs/${topSong}`);
     fetch(url)
       .then((response) => response.json())
       .then((json) => setAllTopArtistSong(json))

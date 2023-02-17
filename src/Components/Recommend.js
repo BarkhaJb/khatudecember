@@ -24,7 +24,7 @@ const toggleReadMore = () => {
 };   
 
 useEffect(() => {
-    const url = 'https://khatuwaleshyam.com:3100/trending';
+    const url = `${process.env.REACT_APP_BASE_URL}/trending`;
     fetch(url)
       .then((response) => response.json())
       .then((json) => {

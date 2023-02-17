@@ -27,7 +27,7 @@ const DashTopPlaylist = () => {
         {
           label: 'Delete',
           onClick: () =>
-            axios.delete(`http://localhost:3100/playlist/${data}`).then(() => {
+            axios.delete(`${process.env.REACT_APP_BASE_URL}/playlist/${data}`).then(() => {
               const del = dashplay.filter((item) => song !== item._id);
               setDashPlay(del);
               getAllSongs();
@@ -61,7 +61,7 @@ const DashTopPlaylist = () => {
 
   const newid = '6371f02af8f0e2b12a2aa226';
   const getAllSongs = () => {
-    const url = `http://localhost:3100/playlist`;
+    const url = (`${process.env.REACT_APP_BASE_URL}/playlist`);
     fetch(url)
       .then((response) => response.json())
       .then((json) => json.filter((item) => item.playlist !== 'new release'))
@@ -105,7 +105,7 @@ const DashTopPlaylist = () => {
     formDataChange.append('data', JSON.stringify(formvalue));
 
     const res = await axios.put(
-      `http://localhost:3100/playlist/${formvalue._id}`,
+      (`${process.env.REACT_APP_BASE_URL}/playlist/${formvalue._id}`),
       formDataChange
     );
 
@@ -139,9 +139,9 @@ const DashTopPlaylist = () => {
       formData.append('data', JSON.stringify(addformvalue));
 
       const result = await axios.post(
-        'http://localhost:3100/playlist/',
+        (`${process.env.REACT_APP_BASE_URL}/playlist/`,
         formData
-      );
+      ));
       console.log('REsult: ', result);
     } catch (error) {
       console.error(error);
@@ -158,7 +158,7 @@ const DashTopPlaylist = () => {
           <div className='buttonsarea'>
             <div className='addalbumarea'>
               <button className='addalbum' onClick={editaddToggle}>
-                add album
+                add Playlist
               </button>
             </div>
             <div className='addbackarea'>

@@ -16,7 +16,7 @@ const Login = ({ setRouteTrue }) => {
   const navigate = useNavigate();
   const onSubmit = (data) => {
     axios
-      .post('http://localhost:3100/login', data, {})
+      .post(`${process.env.REACT_APP_BASE_URL}/login`, data, {})
       .then(function (response) {
         // console.log(response);
         setRouteTrue(true);

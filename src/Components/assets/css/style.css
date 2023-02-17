@@ -1500,8 +1500,16 @@ button.yesdel {
     right: 0;
 }
   .addbackarea {
-    width: 50%;
-    text-align: left;
+    width: 100%;
+    
+    display: flex;
+}
+button.backlinkalbum{
+    margin: 12px;
+    text-transform: capitalize;
+    padding: 6px 8px;
+    border: none;
+    border-radius: 4px;
 }
 .addalbumarea {
     width: 50%;
@@ -1633,6 +1641,9 @@ button.arzibtn {
     color: red;
 }
 
+/* .justify-content-between{
+    justify-content: center;
+} */
 /*Responsive */
 
 

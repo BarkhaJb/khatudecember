@@ -31,7 +31,7 @@ const DashAlbumPage = () => {
           label: 'Delete',
           onClick: () =>
             axios
-              .delete(`http://localhost:3100/category/${data}`)
+              .delete(`${process.env.REACT_APP_BASE_URL}/category/${data}`)
 
               .then(() => {
                 const del = albumcategory.filter((item) => song !== item._id);
@@ -69,7 +69,7 @@ const DashAlbumPage = () => {
   };
 
   const getAllSongs = () => {
-    const url = 'http://localhost:3100/category';
+    const url = (`${process.env.REACT_APP_BASE_URL}/category`);
     fetch(url)
       .then((response) => response.json())
       .then((json) => setAlbumCategory(json))
@@ -77,7 +77,7 @@ const DashAlbumPage = () => {
   };
 
   const getAllSongsData = () => {
-    const url = 'http://localhost:3100/category';
+    const url = (`${process.env.REACT_APP_BASE_URL}/category`);
     fetch(url)
       .then((response) => response.json())
       .then((json) => setAlbumCategory(json))
@@ -111,7 +111,7 @@ const DashAlbumPage = () => {
     formDataChange.append('data', JSON.stringify(formvalue));
 
     const res = await axios.put(
-      `http://localhost:3100/category/${formvalue._id}`,
+      (`${process.env.REACT_APP_BASE_URL}/category/${formvalue._id}`),
       formDataChange
     );
 
@@ -144,7 +144,7 @@ const DashAlbumPage = () => {
       formData.append('data', JSON.stringify(addformvalue));
 
       const result = await axios.post(
-        'http://localhost:3100/category',
+        (`${process.env.REACT_APP_BASE_URL}/category`),
         formData
       );
       console.log('REsult: ', result);

@@ -34,21 +34,21 @@ const DashAllsong = () => {
   const [suggestcategory, setSuggestCategory] = useState();
 
   const selectartist = () => {
-    const url = `http://localhost:3100/artist`;
+    const url = (`${process.env.REACT_APP_BASE_URL}/artist`);
     fetch(url)
       .then((response) => response.json())
       .then((json) => setSuggestArtist(json))
       .catch((error) => console.log(error));
   };
   const selectPlaylist = () => {
-    const url = `http://localhost:3100/playlist`;
+    const url = (`${process.env.REACT_APP_BASE_URL}/playlist`);
     fetch(url)
       .then((response) => response.json())
       .then((json) => setSuggestPlaylist(json))
       .catch((error) => console.log(error));
   };
   const selectCategory = () => {
-    const url = `http://localhost:3100/category`;
+    const url = (`${process.env.REACT_APP_BASE_URL}/category`);
     fetch(url)
       .then((response) => response.json())
       .then((json) => setSuggestCategory(json))
@@ -65,7 +65,7 @@ const DashAllsong = () => {
           label: 'Delete',
           onClick: () =>
             axios
-              .delete(`http://localhost:3100/songs/${data}`)
+              .delete(`${process.env.REACT_APP_BASE_URL}/songs/${data}`)
 
               .then(() => {
                 const del = dashallbhajan.filter((item) => song !== item._id);
@@ -104,7 +104,7 @@ const DashAllsong = () => {
   };
 
   const getAllSongs = () => {
-    const url = 'http://localhost:3100/songs';
+    const url = (`${process.env.REACT_APP_BASE_URL}/songs`);
     fetch(url)
       .then((response) => response.json())
       .then((json) => setDashAllBhajan(json))
@@ -112,7 +112,7 @@ const DashAllsong = () => {
   };
 
   const getAllSongsData = () => {
-    const url = 'http://localhost:3100/songs';
+    const url = (`${process.env.REACT_APP_BASE_URL}/songs`);
     fetch(url)
       .then((response) => response.json())
       .then((json) => setDashAllBhajan(json))
@@ -144,7 +144,7 @@ const DashAllsong = () => {
   };
   const editsubmit = async (event) => {
     event.preventDefault()
-    //debugger;
+    debugger;
     const formDataChange = new FormData();
 
     formDataChange.append('files', addformimg.files[0]);
@@ -154,12 +154,13 @@ const DashAllsong = () => {
     console.log(formDataChange);
     
     const res = await axios.put(
-      `http://localhost:3100/songs/${addformvalue.id}`,
+      (`${process.env.REACT_APP_BASE_URL}/songs/${addformvalue.id}`,
       formDataChange
-    );
+      ));
+      
     editToggle()
     getAllSongs();
-
+    editToggle();
     console.log('resresres', res);
   };
 
@@ -193,20 +194,21 @@ const DashAllsong = () => {
       formData.append('data', JSON.stringify(addformvalue));
       console.log(formData);
 
-      const result = await axios.post('http://localhost:3100/songs', formData);
+      const result = await axios.post(`${process.env.REACT_APP_BASE_URL}/songs`, formData);
       console.log('REsult: ', result);
     } catch (error) {
       console.error(error);
     }
     editAddToggle();
     getAllSongsData();
+    editAddToggle();
   };
 
   const [search, setSearch] = useState();
 
 
   const getallbhajansearch = () => {
-    const url = `http://localhost:3100/search/${search}`;
+    const url = (`${process.env.REACT_APP_BASE_URL}/search/${search}`);
     fetch(url)
       .then((response) => response.json())
       .then((json) => setDashAllBhajan(json))

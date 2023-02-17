@@ -25,7 +25,7 @@ const DashNewRelease = () => {
   const [suggestartist, setSuggestArtist] = useState();
 
   const selectartist = () => {
-    const url = `http://localhost:3100/artist`;
+    const url = (`${process.env.REACT_APP_BASE_URL}/artist`);
     fetch(url)
       .then((response) => response.json())
       .then((json) => setSuggestArtist(json))
@@ -90,7 +90,7 @@ const DashNewRelease = () => {
           label: 'Delete',
           onClick: () =>
             axios
-              .delete(`http://localhost:3100/newreleases/${data}`)
+              .delete(`${process.env.REACT_APP_BASE_URL}/newreleases/${data}`)
               .then(() => {
                 const del = dashnewrelease.filter((item) => song !== item._id);
                 setDashNewReleasesong(del);
@@ -126,7 +126,7 @@ const DashNewRelease = () => {
     console.log(formDataChange);
 
     const res = await axios.put(
-      `http://localhost:3100/newreleases/${addformvalue.id}`,
+      (`${process.env.REACT_APP_BASE_URL}/newreleases/${addformvalue.id}`),
       formDataChange
     );
 
@@ -146,7 +146,7 @@ const DashNewRelease = () => {
       console.log(formData);
 
       const result = await axios.post(
-        'http://localhost:3100/newreleases',
+        (`${process.env.REACT_APP_BASE_URL}/newreleases`),
         formData
       );
       console.log('REsult: ', result);
@@ -159,7 +159,7 @@ const DashNewRelease = () => {
   };
 
   const getAllSongs = () => {
-    const url = 'http://localhost:3100/newreleases';
+    const url = (`${process.env.REACT_APP_BASE_URL}/newreleases`);
     fetch(url)
       .then((response) => response.json())
       .then((json) => setDashNewReleasesong(json))

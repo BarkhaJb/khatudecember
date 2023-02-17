@@ -21,21 +21,21 @@ const Footer = ({ setCurrentArtist , setTrackIndex, setMusicIndex, releaseSong, 
    
 
     useEffect(() => {
-        const url = 'https://khatuwaleshyam.com:3100/category/songs';
+        const url = `${process.env.REACT_APP_BASE_URL}/category/songs`;
         fetch(url)
           .then((response) => response.json())
           .then((json) => setCategory(json))
           .catch((error) => console.log(error));
       }, []);
       useEffect(() => {
-        const url = 'https://khatuwaleshyam.com:3100/playlist';
+        const url = `${process.env.REACT_APP_BASE_URL}/playlist`;
         fetch(url)
           .then((response) => response.json())
           .then((json) => setPlaylist(json))
           .catch((error) => console.log(error));
       }, []);
       useEffect(() => {
-        const url = 'https://khatuwaleshyam.com:3100/artist';
+        const url = `${process.env.REACT_APP_BASE_URL}/artist`;
         fetch(url)
           .then((response) => response.json())
           .then((json) => setArtist(json))

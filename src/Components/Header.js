@@ -34,7 +34,7 @@ const Menu = ({ setCurrentArtist, searchAPI, selectStyle, setSelectStyle }) => {
   };
 
   useEffect(() => {
-    const url = "https://khatuwaleshyam.com:3100/artist/songs";
+    const url =`${process.env.REACT_APP_BASE_URL}/artist/songs`;
     fetch(url)
       .then((response) => response.json())
       .then((json) => setArtist(json))

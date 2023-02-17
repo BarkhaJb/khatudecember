@@ -27,7 +27,7 @@ const DashRecommends = () => {
   const [suggestartist, setSuggestArtist] = useState();
 
   const selectartist = () => {
-    const url = `http://localhost:3100/artist`;
+    const url = (`${process.env.REACT_APP_BASE_URL}/artist`);
     fetch(url)
       .then((response) => response.json())
       .then((json) => setSuggestArtist(json))
@@ -44,7 +44,7 @@ const DashRecommends = () => {
           label: 'Delete',
           onClick: () =>
             axios
-              .delete(`http://localhost:3100/recommended/${data}`)
+              .delete(`${process.env.REACT_APP_BASE_URL}/recommended/${data}`)
               .then(() => {
                 const del = dashrecomsong.filter((item) => song !== item._id);
                 setDashRecomSong(del);
@@ -115,7 +115,8 @@ const DashRecommends = () => {
   };
 
   const getAllSongsData = () => {
-    const url = 'http://localhost:3100/recommended';
+    
+    const url = (`${process.env.REACT_APP_BASE_URL}/recommended`);
     fetch(url)
       .then((response) => response.json())
       .then((json) => setDashRecomSong(json))
@@ -133,7 +134,7 @@ const DashRecommends = () => {
       console.log(formData);
 
       const result = await axios.post(
-        'http://localhost:3100/recommended',
+        (`${process.env.REACT_APP_BASE_URL}/recommended`),
         formData
       );
       console.log('REsult: ', result);
@@ -142,6 +143,7 @@ const DashRecommends = () => {
     }
     editAddToggle();
     getAllSongsData();
+    editAddToggle();
   };
 
   const editsubmit = async (event) => {
@@ -155,7 +157,7 @@ const DashRecommends = () => {
     formDataChange.append('data', JSON.stringify(addformvalue));
 
     const res = await axios.put(
-      `http://localhost:3100/recommended/${addformvalue.id}`,
+      (`${process.env.REACT_APP_BASE_URL}/recommended/${addformvalue.id}`),
       formDataChange
     );
 

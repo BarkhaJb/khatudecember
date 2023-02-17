@@ -87,7 +87,8 @@ const Home = ({
     if (data.length !== 0) {
       setIsLoading(false);
     }
-    const url = 'https://khatuwaleshyam.com:3100/artist';
+    const url = (`${process.env.REACT_APP_BASE_URL}/artist`);
+    debugger
     fetch(url)
       .then((response) => response.json())
       .then((json) => setData(json))
@@ -101,7 +102,7 @@ const Home = ({
     if (category.length !== 0) {
       setIsLoading(false);
     }
-    const url = 'https://khatuwaleshyam.com:3100/category/songs';
+    const url = (`${process.env.REACT_APP_BASE_URL}/category/songs`);
     fetch(url)
       .then((response) => response.json())
       .then((json) => setCategory(json))
@@ -113,7 +114,7 @@ const Home = ({
     if (playlist.length !== 0) {
       setIsLoading(false);
     }
-    const url = 'https://khatuwaleshyam.com:3100/playlist';
+    const url = `${process.env.REACT_APP_BASE_URL}/playlist`;
     fetch(url)
       .then((response) => response.json())
       .then((json) => setPlaylist(json))
@@ -123,7 +124,7 @@ const Home = ({
     if (trendingSong.length !== 0) {
       setIsLoading(false);
     }
-    const url = 'https://khatuwaleshyam.com:3100/trending';
+    const url = `${process.env.REACT_APP_BASE_URL}/trending`;
     fetch(url)
       .then((response) => response.json())
       .then((json) => setTrendingSong(json))

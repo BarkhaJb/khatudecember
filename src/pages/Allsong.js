@@ -20,7 +20,7 @@ const AllSongs = ({ setMusicTracks, setTrackIndex ,audiofunction, isPlaying, set
 
 
   useEffect(() => {
-    const url = `https://khatuwaleshyam.com:3100/songs`;
+    const url = `${process.env.REACT_APP_BASE_URL}/songs`;
     fetch(url)
       .then((response) => response.json())
       .then((json) => {
