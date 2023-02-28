@@ -1,0 +1,9 @@
+User-agent: *
+disallow: /playlists/babulal-sharma/
+disallow: /playlists/new-release-2/
+disallow: /playlists/top-five-2/
+disallow: /playlists/anjali-dwivedi/
+disallow: /playlists/
+disallow: /test/
+disallow: /event/
+Sitemap: https://khatuwaleshyam.com/sitemap.xml
